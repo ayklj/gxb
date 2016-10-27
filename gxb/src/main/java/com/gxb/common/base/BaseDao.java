@@ -3,17 +3,11 @@ package com.gxb.common.base;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 public abstract class BaseDao<T> {
 	
-	@Autowired
-	private HibernateTemplate ht;
-	
-	public HibernateTemplate getHt(){
-		return ht;
-	}
+	protected abstract HibernateTemplate getHt();
 	
 	public Serializable save(T t) throws Exception{
 		return getHt().save(t);

@@ -1,22 +1,28 @@
 package com.gxb.web.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+import com.gxb.common.base.BaseService;
+import com.gxb.common.base.inf.BaseDao;
 import com.gxb.web.dao.UserDao;
 import com.gxb.web.entity.User;
 import com.gxb.web.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService {
+@Scope
+public class UserServiceImpl extends BaseService<User> implements UserService {
 	
 	@Autowired
 	private UserDao dao;
 	
-	@Transactional(readOnly=false)
-	public void save(User user) throws Exception {
-		dao.save(user);
+	@Override
+	protected BaseDao<User> getDao() {
+		return dao;
 	}
+	
+	
 
 }

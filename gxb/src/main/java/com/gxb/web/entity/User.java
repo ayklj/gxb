@@ -18,6 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="gxb_user",
 uniqueConstraints = @UniqueConstraint(columnNames = {}))
 public class User {
+	
 	private String 	id;
 	private String 	name;
 	private String 	password;
