@@ -22,7 +22,5 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	protected BaseDao<User> getDao() {
 		return dao;
 	}
-	
-	
 
 }

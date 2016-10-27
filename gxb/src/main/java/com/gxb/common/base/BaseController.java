@@ -1,7 +1,5 @@
 package com.gxb.common.base;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +25,6 @@ public final class BaseController {
 	
 	private static final Log log = LogFactory.getLog(BaseController.class);
 	
-	public static final ThreadLocal<ServletRequest> HSR_LOCAL = new ThreadLocal<ServletRequest>();
 	
 	@RequestMapping("")
 	@ResponseBody
