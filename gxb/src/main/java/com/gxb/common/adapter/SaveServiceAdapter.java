@@ -1,13 +1,8 @@
 package com.gxb.common.adapter;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.boot.cfgxml.internal.ConfigLoader;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.alibaba.druid.support.logging.Log;
@@ -17,7 +12,7 @@ import com.gxb.common.constant.LocalConstant;
 import com.gxb.common.mapping.BaseServiceMapping;
 import com.gxb.common.mapping.ServiceMapping;
 import com.gxb.common.rep.AjaxResponse;
-import com.gxb.web.service.UserService;
+import com.gxb.common.tools.BeanTools;
 
 public class SaveServiceAdapter implements ServiceAdapter {
 	
@@ -28,29 +23,24 @@ public class SaveServiceAdapter implements ServiceAdapter {
 	
 	private String a; // adapter;
 	
-	
+	private String data; // data
 	
 	public void setA(String a) {
 		this.a = a;
 	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
+
+
 
 	public AjaxResponse execute() {
-		log.debug("execute() -> adapter : " + a);
-		log.debug("execute() -> start");
-		ServletRequest request = LocalConstant.LOCAL_REQUEST.get();
-		ServletContext sc = LocalConstant.LOCAL_REQUEST.get().getServletContext();
-		
-		RequestContextUtils.getWebApplicationContext((HttpServletRequest)request);
-//				.getWebApplicationContext(LocalConstant.LOCAL_REQUEST.get(),sc).getBean(BaseServiceMapping.class); 
-		BaseService<Object> b = sm.getBaseService(UserService.class);
-		try {
-			b.save(null);
-			log.debug(b.toString());
-		} catch (Exception e) {
-			log.debug("",e);
-		}
-		
-		
+		log.debug("execute -> a    : " + a);
+		log.debug("execute -> data : " + data);
+	 	ServiceMapping sm = BeanTools.getSpringBean(BaseServiceMapping.class);
+	 	Class<?> cls = sm.getAdapterBean(a);
+	 	BaseService<?> bs = sm.getBaseService(a);
 		return response;
 	}
 	
