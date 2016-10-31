@@ -4,7 +4,7 @@ import com.gxb.common.base.inf.BaseService;
 
 public interface ServiceMapping {
 	
-	public Class<?> getAdapterBean(String a);
+	public Class<?> getAdapterBeanClass(String a);
 	
 	public BaseService<?> getBaseService(String a);
 	

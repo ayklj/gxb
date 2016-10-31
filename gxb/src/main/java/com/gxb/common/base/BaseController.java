@@ -10,7 +10,6 @@ import com.alibaba.druid.support.logging.LogFactory;
 import com.gxb.common.adapter.BaseServiceAdapter;
 import com.gxb.common.adapter.SaveServiceAdapter;
 import com.gxb.common.rep.AjaxResponse;
-import com.gxb.common.tools.FileTools;
 /**
  * 
  * »ù±¾¿ØÖÆ²ã
@@ -30,14 +29,13 @@ public final class BaseController {
 	@ResponseBody
 	public AjaxResponse base(BaseServiceAdapter adapter){
 		log.debug("BaseController.base()");
-		String str = FileTools.upLoad();
 		return adapter.execute();
 	}
 	
 	@RequestMapping("save")
 	@ResponseBody
 	public AjaxResponse save(SaveServiceAdapter adapter){
-//		return a.execute();
+		log.debug("BaseController.save()");
 		return adapter.execute();
 	}
 	

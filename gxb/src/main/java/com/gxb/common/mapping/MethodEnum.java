@@ -1,4 +1,4 @@
-package com.gxb.enums;
+package com.gxb.common.mapping;
 
 /**
  * Base函数对应枚举 
