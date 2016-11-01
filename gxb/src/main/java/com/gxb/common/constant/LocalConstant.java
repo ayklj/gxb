@@ -1,6 +1,6 @@
 package com.gxb.common.constant;
 
-import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * ThreadLocal 全局常量类
@@ -11,6 +11,8 @@ import javax.servlet.ServletRequest;
  */
 public final class LocalConstant {
 	
-	public static final ThreadLocal<ServletRequest> LOCAL_REQUEST = new ThreadLocal<ServletRequest>();
+	public static final ThreadLocal<HttpServletRequest> LOCAL_REQUEST = new ThreadLocal<HttpServletRequest>();
+	public static final ThreadLocal<String> LOCAL_SESSION_ID =  new ThreadLocal<String>();
+	
 	
 }

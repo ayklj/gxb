@@ -1,15 +1,9 @@
 package com.gxb.common.base;
 
+import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.gxb.common.constant.LocalConstant;
 
-import com.alibaba.druid.support.logging.Log;
-import com.alibaba.druid.support.logging.LogFactory;
-import com.gxb.common.adapter.BaseServiceAdapter;
-import com.gxb.common.adapter.SaveServiceAdapter;
-import com.gxb.common.rep.AjaxResponse;
 /**
  * 
  * »ù±¾¿ØÖÆ²ã
@@ -17,28 +11,10 @@ import com.gxb.common.rep.AjaxResponse;
  * @author KLJ
  *
  */
-@RequestMapping("base")
-@Controller
 public final class BaseController {
 	
-	
-	private static final Log log = LogFactory.getLog(BaseController.class);
-	
-	
-	@RequestMapping("")
-	@ResponseBody
-	public AjaxResponse base(BaseServiceAdapter adapter){
-		log.debug("BaseController.base()");
-		return adapter.execute();
+	protected HttpServletRequest request() {
+		return LocalConstant.LOCAL_REQUEST.get();
 	}
-	
-	@RequestMapping("save")
-	@ResponseBody
-	public AjaxResponse save(SaveServiceAdapter adapter){
-		log.debug("BaseController.save()");
-		return adapter.execute();
-	}
-	
-	
 	
 }

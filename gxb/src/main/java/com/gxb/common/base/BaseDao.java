@@ -3,11 +3,29 @@ package com.gxb.common.base;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 public abstract class BaseDao<T> {
 	
-	protected abstract HibernateTemplate getHt();
+	@Autowired
+	private HibernateTemplate ht;
+	
+	protected HibernateTemplate getHt(){
+		return ht;
+	}
+	
+	protected Session getSession(){
+		return ht.getSessionFactory().getCurrentSession();
+	}
+	
+	protected CriteriaBuilder getCb(){
+		return getSession().getCriteriaBuilder();
+	}
 	
 	public Serializable save(T t) throws Exception{
 		return getHt().save(t);

@@ -60,6 +60,10 @@ public class City implements Serializable {
 	public void setCname(String cname) {
 		this.cname = cname;
 	}
+	@Override
+	public String toString() {
+		return "City [id=" + id + ", pid=" + pid + ", cid=" + cid + ", cname=" + cname + "]";
+	}
 	
 	
 	
