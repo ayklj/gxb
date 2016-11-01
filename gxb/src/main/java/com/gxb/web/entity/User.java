@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
 uniqueConstraints = @UniqueConstraint(columnNames = {}))
 public class User {
 	
-	private String 	id;
+	private String 	id; //×¢ÊÍ
 	private String 	name;
 	private String 	password;
 	
