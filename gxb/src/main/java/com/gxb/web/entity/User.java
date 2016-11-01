@@ -18,10 +18,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name="gxb_user",
 uniqueConstraints = @UniqueConstraint(columnNames = {}))
 public class User {
-	
-	private String 	id; //注释
-	private String 	name;
-	private String 	password;
+	private String id;			//key
+	private String name;		//真实姓名
+	private String password;	//密码
+	private byte pt;			//平台
 	
 	@Id
 	@GeneratedValue(generator="uuid")
@@ -56,10 +56,15 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	@Column(name = "pt",
+			nullable=false)
+	public byte getPt() {
+		return pt;
+	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", password=" + password + "]";
+	public void setPt(byte pt) {
+		this.pt = pt;
 	}
 	
 	
