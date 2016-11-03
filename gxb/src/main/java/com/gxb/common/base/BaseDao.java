@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;

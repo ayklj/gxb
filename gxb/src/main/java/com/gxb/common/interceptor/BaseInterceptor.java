@@ -24,18 +24,22 @@ public class BaseInterceptor implements HandlerInterceptor {
 			throws Exception {
 		log.debug("preHandle");
 		//装配local
+		
 		localSet(request, response, handler);
 		return true;
 	}
 
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
+		
 		log.debug("postHandle");
 	}	
 
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
 		log.debug("afterCompletion");
+		//支持跨域请求
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		//卸载local
 		localRemove();
 	}
