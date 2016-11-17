@@ -5,23 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- * 用户实体映射类
- * @author klj
- * @date 2016年10月25日 15:29:01
- */
 @Entity
-@Table(name="gxb_user",
-uniqueConstraints = @UniqueConstraint(columnNames = {}))
+@Table(name = "pub_user")
 public class User {
-	private String id;			//key
-	private String name;		//真实姓名
-	private String password;	//密码
-	private byte pt;			//平台
+	
+	private String id;
+	
+	private String uid;
+	
+	private String name; // 真实姓名
+	
+	private String idNo; //	身份证号
 	
 	@Id
 	@GeneratedValue(generator="uuid")
@@ -30,43 +27,39 @@ public class User {
 	public String getId() {
 		return id;
 	}
-	
+
 	public void setId(String id) {
 		this.id = id;
 	}
-	//scale 小数位
-	//precision 精密度
-	@Column(name="name",
-			length=32,
-			nullable=false,
-			insertable=true)
+	
+	
+	@Column(name = "uid", length = 32, nullable = false, insertable = true)
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	
+	@Column(name = "idno", length = 18, nullable = false, insertable = true)
+	public String getIdNo() {
+		return idNo;
+	}
+
+	public void setIdNo(String idNo) {
+		this.idNo = idNo;
+	}
+	
+	// scale 小数位
+	// precision 精密度
+	@Column(name = "name", length = 32, nullable = false, insertable = true)
 	public String getName() {
 		return name;
 	}
-	public void setname(String name) {
+
+	public void setName(String name) {
 		this.name = name;
 	}
-	
-	@Column(name = "password",
-			length=16,
-			nullable=true)
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	@Column(name = "pt",
-			nullable=false)
-	public byte getPt() {
-		return pt;
-	}
 
-	public void setPt(byte pt) {
-		this.pt = pt;
-	}
-	
-	
-	
 }
